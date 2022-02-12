@@ -14,21 +14,28 @@ ActiveRecord::Schema.define(version: 2022_02_07_180944) do
 
   create_table "post_groups", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "siteuser_id"
-    t.integer "postgroup_id"
+    t.integer "site_user_id"
+    t.integer "post_group_id"
     t.string "content"
-    t.datetime "created"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "site_users", force: :cascade do |t|
     t.string "name"
+    t.string "tag"
     t.string "avatar"
     t.string "email"
     t.string "password"
-    t.datetime "created"
+    t.boolean "banned"
+    t.boolean "isMod"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

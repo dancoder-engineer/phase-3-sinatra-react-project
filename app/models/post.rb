@@ -1,4 +1,4 @@
 class Post < ActiveRecord::Base
-    belongs_to :postgroup
-    belongs_to :siteuser
+    belongs_to :post_group
+    belongs_to :site_user
 end
