@@ -19,6 +19,11 @@ class ApplicationController < Sinatra::Base
     su.to_json
   end
 
+  get "/users/:name/" do
+    su = SiteUser.where(name: params[:name])
+    su.to_json
+  end
+
   get "/threads/" do
     pg = PostGroup.all
     pg.to_json(include: {posts: {include: :site_user}})

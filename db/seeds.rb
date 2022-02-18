@@ -16,8 +16,8 @@ SiteUser.create([
 {name: "ForKnife",
 tag: "I am to be obeyed, or you are to be banned!",
 avatar: "https://i.imgur.com/UNecbFZ.jpg",
-email: "aGodAmI@satanism.org",
-password:"kneelbeforeme",
+email: "kneelbeforeme@npd.org",
+password:"amodami",
 banned: false,
 isMod: true},
 
