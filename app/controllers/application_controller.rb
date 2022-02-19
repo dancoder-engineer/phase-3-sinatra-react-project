@@ -34,4 +34,20 @@ class ApplicationController < Sinatra::Base
     p.to_json(include: {posts: {include: :site_user}})
   end
 
+
+
+
+  post "/users/" do
+    newUsr = SiteUser.create(
+      name: params[:name],
+      tag: params[:tag],
+      avatar: params[:avatar],
+      email: params[:email],
+      password: params[:password],
+      banned: false,
+      isMod: false
+    )
+    newUsr.to_json
+  end
+
 end
