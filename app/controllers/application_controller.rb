@@ -50,4 +50,13 @@ class ApplicationController < Sinatra::Base
     newUsr.to_json
   end
 
+  post "/posts/" do
+    createdPost = Post.create(
+    site_user_id: params[:site_user_id],
+    post_group_id: params[:post_group_id],
+    content: params[:content]
+    )
+    createdPost.to_json
+  end
+
 end
