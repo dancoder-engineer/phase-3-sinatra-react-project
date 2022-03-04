@@ -59,4 +59,11 @@ class ApplicationController < Sinatra::Base
     createdPost.to_json
   end
 
+  post "/threads/" do
+    createdThread = PostGroup.create(
+      title: params[:title]
+    )
+    createdThread.to_json
+  end
+
 end
