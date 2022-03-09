@@ -66,4 +66,12 @@ class ApplicationController < Sinatra::Base
     createdThread.to_json
   end
 
+  patch "/users/:id/" do
+    user=SiteUser.find(params[:id])
+    banTruth=user.banned
+    changedUser = user.update(banned: !banTruth)
+    changedUser.to_json
+  end
+
+
 end
