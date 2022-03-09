@@ -14,22 +14,22 @@ class ApplicationController < Sinatra::Base
 
 
 
-  get "/users/" do
+  get "/users" do
     su = SiteUser.all
     su.to_json
   end
 
-  get "/users/:name/" do
+  get "/users/:name" do
     su = SiteUser.where(name: params[:name])
     su.to_json
   end
 
-  get "/threads/" do
+  get "/threads" do
     pg = PostGroup.all
     pg.to_json(include: {posts: {include: :site_user}})
   end
 
-  get "/threads/:id/" do
+  get "/threads/:id" do
     p = PostGroup.find(params[:id])
     p.to_json(include: {posts: {include: :site_user}})
   end
@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
 
 
 
-  post "/users/" do
+  post "/users" do
     newUsr = SiteUser.create(
       name: params[:name],
       tag: params[:tag],
@@ -50,7 +50,7 @@ class ApplicationController < Sinatra::Base
     newUsr.to_json
   end
 
-  post "/posts/" do
+  post "/posts" do
     createdPost = Post.create(
     site_user_id: params[:site_user_id],
     post_group_id: params[:post_group_id],
@@ -59,17 +59,16 @@ class ApplicationController < Sinatra::Base
     createdPost.to_json
   end
 
-  post "/threads/" do
+  post "/threads" do
     createdThread = PostGroup.create(
       title: params[:title]
     )
     createdThread.to_json
   end
 
-  patch "/users/:id/" do
+  patch "/banUsers/:id" do
     user=SiteUser.find(params[:id])
-    banTruth=user.banned
-    changedUser = user.update(banned: !banTruth)
+    changedUser = user.update(banned: params[:banned])
     changedUser.to_json
   end
 
