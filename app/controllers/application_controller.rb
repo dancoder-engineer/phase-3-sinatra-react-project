@@ -69,7 +69,7 @@ class ApplicationController < Sinatra::Base
   patch "/banUsers/:id" do
     user=SiteUser.find(params[:id])
     changedUser = user.update(banned: params[:banned])
-    changedUser.to_json
+    user.to_json
   end
 
 
